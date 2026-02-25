@@ -5,7 +5,10 @@
 const Telegram = require('telegram-node-bot')
 const TelegramBaseController = Telegram.TelegramBaseController
 const TextCommand = Telegram.TextCommand
-const tg = new Telegram.Telegram('289489183:AAEUqa_IlUlvYg_Vz6CIFHBDz0LVjrt7lgU', {workers: 2})
+const dotenv = require('dotenv');
+dotenv.config();
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
+const tg = new Telegram.Telegram(TELEGRAM_TOKEN, {workers: 2})
 var ImageJS = require('imagejs');
 var sleep = require('system-sleep');
 var inimage = 'png1.png';
@@ -391,4 +394,5 @@ tg.router
         new TextCommand('/start', 'text'),
         new options()
 	)
+
 	
